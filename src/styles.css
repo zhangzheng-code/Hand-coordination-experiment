@@ -103,14 +103,12 @@ h1 {
 }
 
 .task-page {
-  padding: 50px 0 64px;
+  padding: 46px 0 64px;
 }
 
 .task-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 30px;
+  width: min(820px, 100%);
+  margin: 0 auto;
 }
 
 .task-instruction {
@@ -120,47 +118,15 @@ h1 {
   line-height: 1.7;
 }
 
-.progress {
-  flex: 0 0 auto;
-  min-width: 72px;
-  margin-top: 28px;
-  padding: 8px 13px;
-  border: 1px solid #dededb;
-  border-radius: 999px;
-  color: #5f5f5b;
-  background: #fff;
-  font-size: 14px;
-  text-align: center;
-}
-
 .task-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: min(600px, 100%);
-  margin: 34px auto 10px;
+  width: min(820px, 100%);
+  margin: 30px auto 12px;
   padding: 0 5px;
   color: #747470;
   font-size: 13px;
-}
-
-.progress-track {
-  --progress: 0%;
-  width: min(590px, calc(100% - 10px));
-  height: 3px;
-  margin: 0 auto 14px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #e4e4e1;
-}
-
-.progress-track span {
-  display: block;
-  width: var(--progress);
-  height: 100%;
-  border-radius: inherit;
-  background: #444440;
-  transition: width 220ms ease;
 }
 
 .task-meta strong {
@@ -170,78 +136,33 @@ h1 {
 }
 
 .experiment-card {
-  display: grid;
-  place-items: center;
-  width: min(600px, 100%);
-  height: 420px;
+  width: min(820px, 100%);
   margin: 0 auto;
-  overflow: hidden;
+  padding: 44px 40px 38px;
   border: 1px solid #e2e2df;
   border-radius: 24px;
   background: #f2f2f0;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 3px 12px rgba(20, 20, 18, 0.025);
 }
 
-.knob-task {
+.knob-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 34px 30px;
+}
+
+.knob-item {
   display: grid;
   justify-items: center;
-}
-
-.direction-ring {
-  position: relative;
-  display: grid;
-  width: 300px;
-  height: 300px;
-  place-items: center;
-}
-
-.direction-ring::before {
-  position: absolute;
-  width: 224px;
-  height: 224px;
-  border: 1px solid rgba(148, 148, 142, 0.18);
-  border-radius: 50%;
-  content: "";
-}
-
-.direction-mark {
-  --direction: 0deg;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  transform: translate(-50%, -50%) rotate(var(--direction)) translateY(-125px);
-}
-
-.direction-mark::before {
-  position: absolute;
-  top: 5px;
-  left: 9.5px;
-  width: 1px;
-  height: 13px;
-  background: #8d8d88;
-  content: "";
-}
-
-.direction-mark::after {
-  position: absolute;
-  top: 4px;
-  left: 7px;
-  width: 5px;
-  height: 5px;
-  border-top: 1px solid #6f6f6b;
-  border-left: 1px solid #6f6f6b;
-  content: "";
-  transform: rotate(45deg);
+  gap: 11px;
 }
 
 .knob {
   position: relative;
   z-index: 1;
-  width: 156px;
-  height: 156px;
-  padding: 12px;
+  width: 118px;
+  height: 118px;
+  padding: 9px;
   border: 1px solid #c9c9c5;
   border-radius: 50%;
   background: #dededb;
@@ -252,27 +173,19 @@ h1 {
   user-select: none;
 }
 
-.knob:hover:not(:disabled) {
-  border-color: #aeaea9;
+.knob:hover {
+  border-color: #9e9e99;
   box-shadow: 0 6px 18px rgba(25, 25, 22, 0.07);
   transform: translateY(-1px);
 }
 
-.knob:active:not(:disabled) {
+.knob:active {
   transform: translateY(0) scale(0.985);
-}
-
-.knob:disabled {
-  cursor: default;
-}
-
-.knob--success {
-  border-color: #60605b;
-  box-shadow: 0 0 0 3px rgba(32, 32, 31, 0.07);
 }
 
 .knob__inner {
   position: relative;
+  display: block;
   width: 100%;
   height: 100%;
   border: 1px solid #d5d5d1;
@@ -284,36 +197,27 @@ h1 {
 
 .knob__pointer {
   position: absolute;
-  top: 15px;
+  top: 12px;
   left: calc(50% - 1.5px);
   width: 3px;
-  height: 47px;
+  height: 34px;
   border-radius: 3px;
   background: #262625;
 }
 
 .knob__hub {
   position: absolute;
-  top: calc(50% - 7px);
-  left: calc(50% - 7px);
-  width: 14px;
-  height: 14px;
+  top: calc(50% - 6px);
+  left: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #20201f;
 }
 
-.task-feedback {
-  min-height: 22px;
-  margin: -3px 0 0;
-  color: #747470;
-  font-size: 13px;
-  line-height: 22px;
-  text-align: center;
-}
-
-.task-feedback--success {
-  color: #343431;
-  font-weight: 600;
+.knob-item__hint {
+  color: #858580;
+  font-size: 12px;
 }
 
 .complete-card {
@@ -321,7 +225,7 @@ h1 {
 }
 
 .complete-card p {
-  margin: 16px 0 32px;
+  margin: 16px 0 0;
   color: #666662;
   font-size: 17px;
 }
@@ -357,18 +261,9 @@ h1 {
     padding: 30px 0 36px;
   }
 
-  .task-header {
-    align-items: flex-end;
-    gap: 12px;
-  }
-
   .task-instruction {
     max-width: 270px;
     font-size: 14px;
-  }
-
-  .progress {
-    margin-bottom: 3px;
   }
 
   .task-meta {
@@ -376,17 +271,17 @@ h1 {
   }
 
   .experiment-card {
-    height: min(390px, calc(100vh - 230px));
-    min-height: 350px;
+    padding: 32px 18px 28px;
   }
 
-  .direction-ring {
-    width: 280px;
-    height: 280px;
+  .knob-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 18px;
   }
 
-  .direction-mark {
-    transform: translate(-50%, -50%) rotate(var(--direction)) translateY(-116px);
+  .knob {
+    width: 110px;
+    height: 110px;
   }
 }
 
